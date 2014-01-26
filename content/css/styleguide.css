@@ -1,0 +1,4440 @@
+@charset "CP850";
+/* 
+# Webapp Styleguide
+
+**Basic formatting guide**
+
+The formatting code/information below is to be used to help documenent this stylegude (ignore the Example). [Visit Markdown Syntax](http://daringfireball.net/projects/markdown/syntax) for formatting rules.
+```
+# Heading 1
+## Heading 2
+
+* A unordered list item
+* A unordered  list item
+* A unordered  list item
+
+1. A ordered list item
+2. A ordered list item
+3. A ordered list item
+
+[Link title](http://www.terabyte.co.nz)
+
+*Emphasis*
+**Bold**
+```
+
+
+*/
+/*------------------------------------*\
+    $THEME
+\*------------------------------------*/
+/**
+ * Colour Swatch
+ */
+/*-------------------------------------*\
+	$MODULE COLOURS -
+	NOTE: Variables use BEM style and should use the following convention:
+	$module__subitem--modifier-property. Examples:
+	$lightbox__overlay-background
+	$button--active-color
+\*------------------------------------*/
+/*------------------------------------*\
+    $DEBUG
+\*------------------------------------*/
+/**
+ * Debug mode will visually highlight any potential markup/accessibility quirks
+ * in the browser. Set to `true` or `false`.
+ */
+/*------------------------------------*\
+    $FONT-SIZES
+\*------------------------------------*/
+/**
+ * Font-sizes (in pixels). Refer to relevant sections for their implementations.
+ */
+/*------------------------------------*\
+    $BEAUTONS
+\*------------------------------------*/
+/**
+ * Set the background colors for beauton button functions.
+ */
+/*------------------------------------*\
+    $BRAND
+\*------------------------------------*/
+/**
+ * Brand stuff
+ */
+/**
+ * How big would you like round corners to be by default?
+ */
+/*------------------------------------*\
+    $OBJECTS AND ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * Which objects and abstractions would you like to use?
+ */
+/*------------------------------------*\
+    $TERABYTE OBJECTS AND ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * Which objects and abstractions would you like to use?
+ */
+/*------------------------------------*\
+    $RESPONSIVE
+\*------------------------------------*/
+/**
+ * Responsiveness?
+ */
+/**
+ * Responsiveness for widescreen/high resolution desktop monitors and beyond?
+ * Note: `$terabyte-responsive` variable above must be set to true before enabling this.
+ */
+/**
+ * Responsive push and pull produce a LOT of code, only turn them on if you
+ * definitely need them.
+ */
+/**
+ * Note: `$terabyte-push` variable above must be set to true before enabling these.
+ */
+/**
+ * Note: `$terabyte-pull` variable above must be set to true before enabling these.
+ */
+/**
+ * Tell terabytenz.css when breakpoints start and end.
+ */
+/*------------------------------------*\
+    $FRAMEWORK
+\*------------------------------------*/
+/**
+ * inuit.css will work these next ones out for use within the framework.
+ *
+ * Assign our `$base-line-height` to a new spacing var for more transparency.
+ */
+/*------------------------------------*\
+    INUIT.CSS
+\*------------------------------------*/
+/*!*
+ *
+ * inuitcss.com -- @inuitcss -- @csswizardry
+ *
+ */
+/**
+ * inuit.css acts as a base stylesheet which you should extend with your own
+ * theme stylesheet.
+ *
+ * inuit.css aims to do the heavy lifting; sorting objects and abstractions,
+ * design patterns and fiddly bits of CSS, whilst leaving as much design as
+ * possible to you. inuit.css is the scaffolding to your decorator.
+ *
+ * This stylesheet is heavily documented and contains lots of comments, please
+ * take care to read and refer to them as you build. For further support please
+ * tweet at @inuitcss.
+ *
+ * Owing to the amount of comments please only ever use minified CSS in
+ * production. This file is purely a dev document.
+ *
+ * The table of contents below maps to section titles of the same name, to jump
+ * to any section simply run a find for $[SECTION-TITLE].
+ *
+ * Most objects and abstractions come with a chunk of markup that you should be
+ * able to paste into any view to quickly see how the CSS works in conjunction
+ * with the correct HTML.
+ *
+ * inuit.css is written to this standard: github.com/csswizardry/CSS-Guidelines
+ *
+ * LICENSE
+ *
+ * Copyright 2013 Harry Roberts
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Thank you for choosing inuit.css. May your web fonts render perfectly.
+ */
+/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * CONTENTS............You’re reading it!
+ * WARNING.............Here be dragons!
+ * IMPORTS.............Begin importing the sections below
+ *
+ * MIXINS..............Super-simple Sass stuff
+ * NORMALIZE...........normalize.css
+ * RESET...............Set some defaults
+ * CLEARFIX............
+ * SHARED..............Shared declarations
+ *
+ * MAIN................High-level elements like `html`, `body`, etc.
+ * HEADINGS............Double-stranded heading hierarchy
+ * PARAGRAPHS..........
+ * SMALLPRINT..........Smaller text elements like `small`
+ * QUOTES..............
+ * CODE................
+ * LISTS...............
+ * IMAGES..............
+ * TABLES..............
+ * FORMS...............
+ *
+ * GRIDS...............Fluid, proportional and nestable grids
+ * FLEXBOX.............Crudely emulate flexbox
+ * COLUMNS.............CSS3 columns
+ * NAV.................A simple abstraction to put a list in horizontal nav mode
+ * OPTIONS.............Grouped nav items
+ * PAGINATION..........Very stripped back, basic paginator
+ * BREADCRUMB..........Simple breadcrumb trail object
+ * MEDIA...............Media object
+ * MARGINALIA..........Simple marginalia content
+ * ISLAND..............Boxed off content
+ * BLOCK-LIST..........Blocky lists of content
+ * MATRIX..............Gridded lists
+ * SPLIT...............A simple split-in-two object
+ * THIS-OR-THIS........Options object
+ * LINK-COMPLEX........
+ * FLYOUT..............Flyout-on-hover object
+ * ARROWS..............CSS arrows
+ * SPRITE..............Generic spriting element
+ * ICON-TEXT...........Icon and text couplings
+ * BEAUTONS............Use the beautons micro library
+ * LOZENGES............Basic lozenge styles
+ * RULES...............Horizontal rules
+ * STATS...............Simple stats object
+ * GREYBOX.............Wireframing styles
+ *
+ * WIDTHS..............Width classes for use alongside the grid system etc.
+ * PUSH................Push classes for manipulating grids
+ * PULL................Pull classes for manipulating grids
+ * BRAND...............Helper class to apply brand treatment to elements
+ * HELPER..............A series of helper classes to use arbitrarily
+ * DEBUG...............Enable to add visual flags for debugging purposes
+ */
+/*------------------------------------*\
+    $WARNING
+\*------------------------------------*/
+/*
+ * inuit.css, being an OO framework, works in keeping with the open/closed
+ * principle. The variables you set previously are now being used throughout
+ * inuit.css to style everything we need for a base. Any custom styles SHOULD
+ * NOT be added or modified in inuit.css directly, but added via your theme
+ * stylesheet as per the open/closed principle:
+ *
+ * csswizardry.com/2012/06/the-open-closed-principle-applied-to-css
+ *
+ * Try not to edit any CSS beyond this point; if you find you need to do so
+ * it is a failing of the framework so please tweet at @inuitcss.
+ */
+/*------------------------------------*\
+    $IMPORTS
+\*------------------------------------*/
+/**
+ * Generic utility styles etc.
+ */
+/*------------------------------------*\
+    $DEFAULTS
+\*------------------------------------*/
+/**
+ * inuit.css’ default variables. Redefine these in your `_vars.scss` file (found
+ * in the inuit.css-web-template) to override them.
+ */
+/*------------------------------------*\
+    $DEBUG
+\*------------------------------------*/
+/**
+ * Debug mode will visually highlight any potential markup/accessibility quirks
+ * in the browser. Set to `true` or `false`.
+ */
+/*------------------------------------*\
+    $BORDER-BOX
+\*------------------------------------*/
+/**
+ * Do you want all elements to adopt `box-sizing:border-box;` as per
+ * paulirish.com/2012/box-sizing-border-box-ftw ?
+ */
+/*------------------------------------*\
+    $BASE
+\*------------------------------------*/
+/**
+ * Base stuff
+ */
+/**
+ * Base font-family.
+ */
+/**
+ * Default colour for objects’ borders etc.
+ */
+/*------------------------------------*\
+    $RESPONSIVE
+\*------------------------------------*/
+/**
+ * Responsiveness?
+ */
+/**
+ * Responsiveness for widescreen/high resolution desktop monitors and beyond?
+ * Note: `$responsive` variable above must be set to true before enabling this.
+ */
+/**
+ * Responsive push and pull produce a LOT of code, only turn them on if you
+ * definitely need them.
+ */
+/**
+ * Note: `$push` variable above must be set to true before enabling these.
+ */
+/**
+ * Note: `$pull` variable above must be set to true before enabling these.
+ */
+/**
+ * Tell inuit.css when breakpoints start.
+ */
+/*------------------------------------*\
+    $FONT-SIZES
+\*------------------------------------*/
+/**
+ * Font-sizes (in pixels). Refer to relevant sections for their implementations.
+ */
+/*------------------------------------*\
+    $BEAUTONS
+\*------------------------------------*/
+/**
+ * Set the background colors for beauton button functions.
+ */
+/*------------------------------------*\
+    $QUOTES
+\*------------------------------------*/
+/**
+ * English quote marks?
+ */
+/**
+ * If you want English quotes then please do not edit these; they’re only here
+ * because Sass needs them.
+ */
+/**
+ * If you need non-English quotes, please alter the following values accordingly:
+ */
+/*------------------------------------*\
+    $BRAND
+\*------------------------------------*/
+/**
+ * Brand stuff
+ */
+/**
+ * How big would you like round corners to be by default?
+ */
+/*------------------------------------*\
+    $OBJECTS AND ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * Which objects and abstractions would you like to use?
+ */
+/*------------------------------------*\
+    $FRAMEWORK
+\*------------------------------------*/
+/**
+ * inuit.css will work these next ones out for use within the framework.
+ *
+ * Assign our `$base-line-height` to a new spacing var for more transparency.
+ */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * Create a fully formed type style (sizing and vertical rhythm) by passing in a
+ * single value, e.g.:
+ *
+   `@include font-size(10px);`
+ *
+ * Thanks to @redclov3r for the `line-height` Sass:
+ * twitter.com/redclov3r/status/250301539321798657
+ */
+/**
+ * Style any number of headings in one fell swoop, e.g.:
+ *
+   .foo{
+       @include headings(1, 3){
+           color:#BADA55;
+       }
+    }
+ *
+ * With thanks to @lar_zzz, @paranoida, @rowanmanning and ultimately
+ * @thierrylemoulec for refining and improving my initial mixin.
+ */
+/**
+ * Create vendor-prefixed CSS in one go, e.g.
+ *
+   `@include vendor(border-radius, 4px);`
+ *
+ */
+/**
+ * Create CSS keyframe animations for all vendors in one go, e.g.:
+ *
+   .foo{
+       @include vendor(animation, shrink 3s);
+   }
+
+   @include keyframe(shrink){
+       from{
+           font-size:5em;
+       }
+   }
+ *
+ * Courtesy of @integralist: twitter.com/integralist/status/260484115315437569
+ */
+/**
+ * Force overly long spans of text to truncate, e.g.:
+ *
+   `@include truncate(100%);`
+ *
+ * Where `$truncation-boundary` is a united measurement.
+ */
+/**
+ * Media query for targetting retina devices, e.g.:
+ *
+   .foo{
+       background-image:url(1x.png);
+       @include retina(){
+           background-image:url(2x.png);
+       }
+   }
+ *
+ */
+/**
+ * CSS arrows!!! But... before you read on, you might want to grab a coffee...
+ *
+ * This mixin creates a CSS arrow on a given element. We can have the arrow
+ * appear in one of 12 locations, thus:
+ *
+ *       01    02    03
+ *    +------------------+
+ * 12 |                  | 04
+ *    |                  |
+ * 11 |                  | 05
+ *    |                  |
+ * 10 |                  | 06
+ *    +------------------+
+ *       09    08    07
+ *
+ * You pass this position in along with a desired arrow color and optional
+ * border color, for example:
+ *
+ * `@include arrow(top, left, red)`
+ *
+ * for just a single, red arrow, or:
+ *
+ * `@include arrow(bottom, center, red, black)`
+ *
+ * which will create a red triangle with a black border which sits at the bottom
+ * center of the element. Call the mixin thus:
+ *
+   .foo{
+       background-color:#BADA55;
+       border:1px solid #ACE;
+       @include arrow(top, left, #BADA55, #ACE);
+   }
+ *
+ */
+/**
+ * Media query mixin.
+ *
+ * It’s not great practice to define solid breakpoints up-front, preferring to
+ * modify your design when it needs it, rather than assuming you’ll want a
+ * change at ‘mobile’. However, as inuit.css is required to take a hands off
+ * approach to design decisions, this is the closest we can get to baked-in
+ * responsiveness. It’s flexible enough to allow you to set your own breakpoints
+ * but solid enough to be frameworkified.
+ *
+ * We define some broad breakpoints in our vars file that are picked up here
+ * for use in a simple media query mixin. Our options are:
+ *
+ * palm
+ * lap
+ * lap-and-up
+ * portable
+ * desk
+ * desk-wide
+ *
+ * Not using a media query will, naturally, serve styles to all devices.
+ *
+ * `@include media-query(palm){ [styles here] }`
+ *
+ * We work out your end points for you:
+ */
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/*
+ * Correct `block` display not defined in IE 8/9.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/*
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/*
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/*
+ * Address styling not present in IE 8/9.
+ */
+[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/*
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/*
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/*
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+  outline: thin dotted;
+}
+
+/*
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/*
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/*
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/*
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+
+/*
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+
+/*
+ * Address differences between Firefox and other browsers.
+ */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/*
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/*
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/*
+ * Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  white-space: pre-wrap;
+}
+
+/*
+ * Set consistent quote types.
+ */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/*
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/*
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/*
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0;
+}
+
+/*
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/*
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/*
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/*
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/*
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/*
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+
+/*
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/*
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/*
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/*
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/*
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/*
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/*
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/**
+ * A more considered reset; more of a restart...
+ * As per: csswizardry.com/2011/10/reset-restarted
+ */
+/**
+* Let’s make the box model all nice, shall we...?
+*/
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/**
+ * The usual...
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+form, fieldset, legend,
+table, th, td, caption,
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Give a help cursor to elements that give extra info on `:hover`.
+ */
+abbr[title], dfn[title] {
+  cursor: help;
+}
+
+/**
+ * Remove underlines from potentially troublesome elements.
+ */
+u, ins {
+  text-decoration: none;
+}
+
+/**
+ * Apply faux underline via `border-bottom`.
+ */
+ins {
+  border-bottom: 1px solid;
+}
+
+/**
+ * So that `alt` text is visually offset if images don’t load.
+ */
+img {
+  font-style: italic;
+}
+
+/**
+ * Give form elements some cursor interactions...
+ */
+label,
+input,
+textarea,
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+.text-input:active,
+.text-input:focus,
+textarea:active,
+textarea:focus {
+  cursor: text;
+  outline: none;
+}
+
+/*------------------------------------*\
+    $CLEARFIX
+\*------------------------------------*/
+/**
+ * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * Extend the clearfix class with Sass to avoid the `.cf` class appearing over
+ * and over in your markup.
+ */
+.cf:after, .grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*------------------------------------*\
+    $SHARED
+\*------------------------------------*/
+/**
+ * Where `margin-bottom` is concerned, this value will be the same as the
+ * base line-height. This allows us to keep a consistent vertical rhythm.
+ * As per: csswizardry.com/2012/06/single-direction-margin-declarations
+ */
+/**
+ * Base elements
+ */
+h1, h2, h3, h4, h5, h6, hgroup,
+ul, ol, dl,
+blockquote, p, address,
+table,
+fieldset, figure,
+pre,
+.form-fields > li,
+.media,
+.island,
+.islet {
+  margin-bottom: 17px;
+  margin-bottom: 1.21429rem;
+}
+.islet h1, .islet h2, .islet h3, .islet h4, .islet h5, .islet h6, .islet hgroup, .islet
+ul, .islet ol, .islet dl, .islet
+blockquote, .islet p, .islet address, .islet
+table, .islet
+fieldset, .islet figure, .islet
+pre, .islet .form-fields > li, .islet
+.media, .islet
+.island, .islet
+.islet {
+  margin-bottom: 8.5px;
+  margin-bottom: 0.60714rem;
+}
+
+/**
+ * Doubled up `margin-bottom` helper class.
+ */
+.landmark {
+  margin-bottom: 34px;
+  margin-bottom: 2.42857rem;
+}
+
+/**
+ * `hr` elements only take up a few pixels, so we need to give them special
+ * treatment regarding vertical rhythm.
+ */
+hr {
+  margin-bottom: 15px;
+  margin-bottom: 1.07143rem;
+}
+
+/**
+ * Where `margin-left` is concerned we want to try and indent certain elements
+ * by a consistent amount. Define that amount once, here.
+ */
+ul, ol, dd {
+  margin-left: 34px;
+  margin-left: 2.42857rem;
+}
+
+/**
+ * Base styles; unclassed HTML elements etc.
+ */
+/*------------------------------------*\
+    $MAIN
+\*------------------------------------*/
+html {
+  font: 0.875em/1.21429 Arial, Verdana, sans-serif;
+  overflow-y: scroll;
+  min-height: 100%;
+}
+
+/*------------------------------------*\
+    $HEADINGS
+\*------------------------------------*/
+/**
+ * As per: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css
+ *
+ * When we define a heading we also define a corresponding class to go with it.
+ * This allows us to apply, say, `class=alpha` to a `h3`; a double-stranded
+ * heading hierarchy.
+ */
+h1, .alpha {
+  font-size: 48px;
+  font-size: 3.42857rem;
+  line-height: 1.0625;
+}
+
+h2, .beta {
+  font-size: 30px;
+  font-size: 2.14286rem;
+  line-height: 1.13333;
+}
+
+h3, .gamma {
+  font-size: 24px;
+  font-size: 1.71429rem;
+  line-height: 1.41667;
+}
+
+h4, .delta {
+  font-size: 20px;
+  font-size: 1.42857rem;
+  line-height: 1.7;
+}
+
+h5, .epsilon {
+  font-size: 18px;
+  font-size: 1.28571rem;
+  line-height: 1.88889;
+}
+
+h6, .zeta {
+  font-size: 14px;
+  font-size: 1rem;
+  line-height: 1.21429;
+}
+
+/**
+ * Heading groups and generic any-heading class.
+ * To target any heading of any level simply apply a class of `.hN`, e.g.:
+ *
+   <hgroup>
+       <h1 class=hN>inuit.css</h1>
+       <h2 class=hN>Best. Framework. Ever!</h2>
+   </hgroup>
+ *
+ */
+hgroup .hN {
+  margin-bottom: 0;
+}
+
+/**
+ * A series of classes for setting massive type; for use in heroes, mastheads,
+ * promos, etc.
+ */
+.giga {
+  font-size: 36px;
+  font-size: 2.57143rem;
+  line-height: 1.41667;
+}
+
+.mega {
+  font-size: 23px;
+  font-size: 1.64286rem;
+  line-height: 1.47826;
+}
+
+.kilo {
+  font-size: 19px;
+  font-size: 1.35714rem;
+  line-height: 1.78947;
+}
+
+/*------------------------------------*\
+    $PARAGRAPHS
+\*------------------------------------*/
+/**
+ * The `.lede` class is used to make the introductory text (usually a paragraph)
+ * of a document slightly larger.
+ */
+.lede,
+.lead {
+  font-size: 15.75px;
+  font-size: 1.125rem;
+  line-height: 1.07937;
+}
+
+/*------------------------------------*\
+    $SMALLPRINT
+\*------------------------------------*/
+/**
+ * A series of classes for setting tiny type; for use in smallprint etc.
+ */
+.smallprint,
+.milli {
+  font-size: 13px;
+  font-size: 0.92857rem;
+  line-height: 1.30769;
+}
+
+.micro {
+  font-size: 12px;
+  font-size: 0.85714rem;
+  line-height: 1.41667;
+}
+
+/*------------------------------------*\
+    $QUOTES
+\*------------------------------------*/
+/**
+ * If English quotes are set in `_vars.scss`, define them here.
+ */
+/**
+ * Big up @boblet: html5doctor.com/blockquote-q-cite
+ */
+/**
+ * Inline quotes.
+ */
+q {
+  quotes: "\2018" "\2019" "\201C" "\201D";
+}
+q:before {
+  content: "\2018";
+  content: open-quote;
+}
+q:after {
+  content: "\2019";
+  content: close-quote;
+}
+q q:before {
+  content: "\201C";
+  content: open-quote;
+}
+q q:after {
+  content: "\201D";
+  content: close-quote;
+}
+
+blockquote {
+  quotes: "\201C" "\201D";
+}
+blockquote p:before {
+  content: "\201C";
+  content: open-quote;
+}
+blockquote p:after {
+  content: "";
+  content: no-close-quote;
+}
+blockquote p:last-of-type:after {
+  content: "\201D";
+  content: close-quote;
+}
+blockquote q:before {
+  content: "\2018";
+  content: open-quote;
+}
+blockquote q:after {
+  content: "\2019";
+  content: close-quote;
+}
+
+/**
+ *
+   <blockquote>
+       <p>Insanity: doing the same thing over and over again and expecting
+       different results.</p>
+       <b class=source>Albert Einstein</b>
+   </blockquote>
+ *
+ */
+blockquote {
+  /**
+   * .4em is roughly equal to the width of the opening “ that we wish to hang.
+   */
+  text-indent: -0.41em;
+}
+blockquote p:last-of-type {
+  margin-bottom: 0;
+}
+
+.source {
+  display: block;
+  text-indent: 0;
+}
+.source:before {
+  content: "\2014";
+}
+
+/*------------------------------------*\
+    $CODE
+\*------------------------------------*/
+/**
+ * Use an explicit font stack to ensure browsers render correct `line-height`.
+ */
+pre {
+  overflow: auto;
+}
+
+pre mark {
+  background: none;
+  border-bottom: 1px solid;
+  color: inherit;
+}
+
+/**
+ * Add comments to your code examples, e.g.:
+ *
+   <code>&lt;/div&gt;<span class=code-comment>&lt;!-- /wrapper --&gt;</span></code>
+ *
+ */
+.code-comment {
+  /**
+   * Override this setting in your theme stylesheet
+   */
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+
+/**
+ * You can add line numbers to your code examples but be warned, it requires
+ * some pretty funky looking markup, e.g.:
+ *
+   <ol class=line-numbers>
+       <li><code>.nav{</code></li>
+       <li><code>    list-style:none;</code></li>
+       <li><code>    margin-left:0;</code></li>
+       <li><code>}</code></li>
+       <li><code>    .nav > li,</code></li>
+       <li><code>        .nav > li > a{</code></li>
+       <li><code>            display:inline-block;</code></li>
+       <li><code>           *display:inline-block;</code></li>
+       <li><code>            zoom:1;</code></li>
+       <li><code>        }</code></li>
+   </ol>
+ *
+ * 1. Make the list look like code.
+ * 2. Give the list flush numbers with a leading zero.
+ * 3. Make sure lines of code don’t wrap.
+ * 4. Give the code form by forcing the `code` to honour white-space.
+ */
+.line-numbers {
+  font-family: monospace, serif;
+  /* [1] */
+  list-style: decimal-leading-zero inside;
+  /* [2] */
+  white-space: nowrap;
+  /* [3] */
+  overflow: auto;
+  /* [3] */
+  margin-left: 0;
+}
+
+.line-numbers code {
+  white-space: pre;
+  /* [4] */
+}
+
+/*------------------------------------*\
+    $IMAGES
+\*------------------------------------*/
+/**
+ * Demo: jsfiddle.net/inuitcss/yMtur
+ */
+/**
+ * Fluid images.
+ */
+img {
+  max-width: 100%;
+}
+
+/**
+ * Non-fluid images if you specify `width` and/or `height` attributes.
+ */
+img[width],
+img[height] {
+  max-width: none;
+}
+
+/**
+ * Rounded images.
+ */
+.img--round {
+  border-radius: 0.28571em;
+}
+
+/**
+ * Image placement variations.
+ */
+.img--right {
+  float: right;
+  margin-bottom: 17px;
+  margin-left: 17px;
+}
+
+.img--left {
+  float: left;
+  margin-right: 17px;
+  margin-bottom: 17px;
+}
+
+.img--center {
+  display: block;
+  margin-right: auto;
+  margin-bottom: 17px;
+  margin-left: auto;
+}
+
+/**
+ * Keep your images on your baseline.
+ *
+ * Please note, these will not work too nicely with fluid images and will
+ * distort when resized below a certain width. Use with caution.
+ */
+.img--short {
+  height: 85px;
+}
+
+.img--medium {
+  height: 170px;
+}
+
+.img--tall {
+  height: 255px;
+}
+
+/**
+ * Images in `figure` elements.
+ */
+figure > img {
+  display: block;
+}
+
+/*------------------------------------*\
+    $LISTS
+\*------------------------------------*/
+/**
+ * Remove vertical spacing from nested lists.
+ */
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+/**
+ * Have a numbered `ul` without the semantics implied by using an `ol`.
+ */
+/*ul*/
+.numbered-list {
+  list-style-type: decimal;
+}
+
+/*------------------------------------*\
+    $TABLES
+\*------------------------------------*/
+/**
+ * We have a lot at our disposal for making very complex table constructs, e.g.:
+ *
+   <table class="table--bordered  table--striped  table--data">
+       <colgroup>
+           <col class=t10>
+           <col class=t10>
+           <col class=t10>
+           <col>
+       </colgroup>
+       <thead>
+           <tr>
+               <th colspan=3>Foo</th>
+               <th>Bar</th>
+           </tr>
+           <tr>
+               <th>Lorem</th>
+               <th>Ipsum</th>
+               <th class=numerical>Dolor</th>
+               <th>Sit</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <th rowspan=3>Sit</th>
+               <td>Dolor</td>
+               <td class=numerical>03.788</td>
+               <td>Lorem</td>
+           </tr>
+           <tr>
+               <td>Dolor</td>
+               <td class=numerical>32.210</td>
+               <td>Lorem</td>
+           </tr>
+           <tr>
+               <td>Dolor</td>
+               <td class=numerical>47.797</td>
+               <td>Lorem</td>
+           </tr>
+           <tr>
+               <th rowspan=2>Sit</th>
+               <td>Dolor</td>
+               <td class=numerical>09.640</td>
+               <td>Lorem</td>
+           </tr>
+           <tr>
+               <td>Dolor</td>
+               <td class=numerical>12.117</td>
+               <td>Lorem</td>
+           </tr>
+       </tbody>
+   </table>
+ *
+ */
+table {
+  width: 100%;
+}
+
+th,
+td {
+  padding: 4.25px;
+  text-align: left;
+}
+@media screen and (min-width: 480px) {
+  th,
+  td {
+    padding: 8.5px;
+  }
+}
+
+/**
+ * Cell alignments
+ */
+[colspan] {
+  text-align: center;
+}
+
+[colspan="1"] {
+  text-align: left;
+}
+
+[rowspan] {
+  vertical-align: middle;
+}
+
+[rowspan="1"] {
+  vertical-align: top;
+}
+
+.numerical {
+  text-align: right;
+}
+
+/**
+ * In the HTML above we see several `col` elements with classes whose numbers
+ * represent a percentage width for that column. We leave one column free of a
+ * class so that column can soak up the effects of any accidental breakage in
+ * the table.
+ */
+.t5 {
+  width: 5%;
+}
+
+.t10 {
+  width: 10%;
+}
+
+.t12 {
+  width: 12.5%;
+}
+
+/* 1/8 */
+.t15 {
+  width: 15%;
+}
+
+.t20 {
+  width: 20%;
+}
+
+.t25 {
+  width: 25%;
+}
+
+/* 1/4 */
+.t30 {
+  width: 30%;
+}
+
+.t33 {
+  width: 33.333%;
+}
+
+/* 1/3 */
+.t35 {
+  width: 35%;
+}
+
+.t37 {
+  width: 37.5%;
+}
+
+/* 3/8 */
+.t40 {
+  width: 40%;
+}
+
+.t45 {
+  width: 45%;
+}
+
+.t50 {
+  width: 50%;
+}
+
+/* 1/2 */
+.t55 {
+  width: 55%;
+}
+
+.t60 {
+  width: 60%;
+}
+
+.t62 {
+  width: 62.5%;
+}
+
+/* 5/8 */
+.t65 {
+  width: 65%;
+}
+
+.t66 {
+  width: 66.666%;
+}
+
+/* 2/3 */
+.t70 {
+  width: 70%;
+}
+
+.t75 {
+  width: 75%;
+}
+
+/* 3/4*/
+.t80 {
+  width: 80%;
+}
+
+.t85 {
+  width: 85%;
+}
+
+.t87 {
+  width: 87.5%;
+}
+
+/* 7/8 */
+.t90 {
+  width: 90%;
+}
+
+.t95 {
+  width: 95%;
+}
+
+/**
+ * Bordered tables
+ */
+.table--bordered th,
+.table--bordered td {
+  border: 1px solid #c2c2c2;
+}
+.table--bordered th:empty,
+.table--bordered td:empty {
+  border: none;
+}
+.table--bordered thead tr:last-child th {
+  border-bottom-width: 2px;
+}
+.table--bordered tbody tr th:last-of-type {
+  border-right-width: 2px;
+}
+
+/**
+ * Striped tables
+ */
+.table--striped tbody tr:nth-of-type(odd) {
+  background-color: #ffc;
+  /* Override this color in your theme stylesheet */
+}
+
+/**
+ * Data table
+ */
+.table--data {
+  font: 12px/1.5 sans-serif;
+}
+
+/*------------------------------------*\
+    $FORMS
+\*------------------------------------*/
+/**
+ *
+ * Demo: jsfiddle.net/inuitcss/MhHHU
+ *
+ */
+fieldset {
+  padding: 17px;
+}
+
+/**
+ * Text inputs
+ *
+ * Instead of a `[type]` selector for each kind of form input, we just use a
+ * class to target any/every one, e.g.:
+   <input type=text class=text-input>
+   <input type=email class=text-input>
+   <input type=password class=text-input>
+ *
+ */
+.text-input,
+textarea {
+  /**
+   * Style these via your theme stylesheet.
+   */
+}
+
+/**
+ * Group sets of form fields in a list, e.g.:
+ *
+   <ul class=form-fields>
+       <li>
+           <label />
+           <input />
+       </li>
+       <li>
+           <label />
+           <select />
+       </li>
+       <li>
+           <label />
+           <input />
+       </li>
+   </ul>
+ *
+ */
+.form-fields {
+  list-style: none;
+  margin: 0;
+}
+
+.form-fields > li:last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * Labels
+ *
+ * Define a `.label` class as well as a `label` element. This means we can apply
+ * label-like styling to meta-labels for groups of options where a `label`
+ * element is not suitable, e.g.:
+ *
+   <li>
+       <span class=label>Select an option below:</span>
+       <ul class="multi-list  four-cols">
+           <li>
+               <input /> <label />
+           </li>
+           <li>
+               <input /> <label />
+           </li>
+           <li>
+               <input /> <label />
+           </li>
+           <li>
+               <input /> <label />
+           </li>
+       </ul>
+   </li>
+ *
+ */
+label,
+.label {
+  display: block;
+}
+
+/**
+ * Extra help text in `label`s, e.g.:
+ *
+   <label>Card number <small class=additional>No spaces</small></label>
+ *
+ */
+.additional {
+  display: block;
+  font-weight: normal;
+}
+
+/*
+ * Groups of checkboxes and radios, e.g.:
+ *
+   <li>
+       <ul class=check-list>
+           <li>
+               <input /> <label />
+           </li>
+           <li>
+               <input /> <label />
+           </li>
+       </ul>
+   </li>
+ *
+ */
+.check-list {
+  list-style: none;
+  margin: 0;
+}
+
+/*
+ * Labels in check-lists
+ */
+.check-label,
+.check-list label,
+.check-list .label {
+  display: inline-block;
+}
+
+/**
+ * Spoken forms are for forms that read like spoken word, e.g.:
+ *
+   <li class=spoken-form>
+       Hello, my <label for=spoken-name>name</label> is
+       <input type=text class=text-input id=spoken-name>. My home
+       <label for=country>country</label> is
+       <select id=country>
+           <option>UK</option>
+           <option>US</option>
+           <option>Other</option>
+       </select>
+   </li>
+ *
+ */
+.spoken-form label {
+  display: inline-block;
+  font: inherit;
+}
+
+/**
+ * Extra help text displayed after a field when that field is in focus, e.g.:
+ *
+   <label for=email>Email:</label>
+   <input type=email class=text-input id=email>
+   <small class=extra-help>.edu emails only</small>
+ *
+ * We leave the help text in the document flow and merely set it to
+ * `visibility:hidden;`. This means that it won’t interfere with anything once
+ * it reappears.
+ *
+ */
+/*small*/
+.extra-help {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.text-input:active + .extra-help,
+.text-input:focus + .extra-help {
+  visibility: visible;
+}
+
+/**
+ * Objects and abstractions
+ */
+/**
+ * Style trumps; helper and brand classes
+ */
+/*------------------------------------*\
+    $WIDTHS
+\*------------------------------------*/
+/**
+ * Sizes in human readable format. These are used in conjunction with other
+ * objects and abstractions found in inuit.css, most commonly the grid system
+ * and faux flexbox.
+ *
+ * We have a mixin to generate our widths and their breakpoint-specific
+ * variations.
+ */
+/**
+* Whole
+*/
+.one-whole {
+  width: 100%;
+}
+
+/**
+* Halves
+*/
+.one-half {
+  width: 50%;
+}
+
+/**
+* Thirds
+*/
+.one-third {
+  width: 33.333%;
+}
+
+.two-thirds {
+  width: 66.666%;
+}
+
+/**
+* Quarters
+*/
+.one-quarter {
+  width: 25%;
+}
+
+.two-quarters {
+  width: 50%;
+}
+
+.three-quarters {
+  width: 75%;
+}
+
+/**
+* Fifths
+*/
+.one-fifth {
+  width: 20%;
+}
+
+.two-fifths {
+  width: 40%;
+}
+
+.three-fifths {
+  width: 60%;
+}
+
+.four-fifths {
+  width: 80%;
+}
+
+/**
+* Sixths
+*/
+.one-sixth {
+  width: 16.666%;
+}
+
+.two-sixths {
+  width: 33.333%;
+}
+
+.three-sixths {
+  width: 50%;
+}
+
+.four-sixths {
+  width: 66.666%;
+}
+
+.five-sixths {
+  width: 83.333%;
+}
+
+/**
+* Eighths
+*/
+.one-eighth {
+  width: 12.5%;
+}
+
+.two-eighths {
+  width: 25%;
+}
+
+.three-eighths {
+  width: 37.5%;
+}
+
+.four-eighths {
+  width: 50%;
+}
+
+.five-eighths {
+  width: 62.5%;
+}
+
+.six-eighths {
+  width: 75%;
+}
+
+.seven-eighths {
+  width: 87.5%;
+}
+
+/**
+* Tenths
+*/
+.one-tenth {
+  width: 10%;
+}
+
+.two-tenths {
+  width: 20%;
+}
+
+.three-tenths {
+  width: 30%;
+}
+
+.four-tenths {
+  width: 40%;
+}
+
+.five-tenths {
+  width: 50%;
+}
+
+.six-tenths {
+  width: 60%;
+}
+
+.seven-tenths {
+  width: 70%;
+}
+
+.eight-tenths {
+  width: 80%;
+}
+
+.nine-tenths {
+  width: 90%;
+}
+
+/**
+* Twelfths
+*/
+.one-twelfth {
+  width: 8.333%;
+}
+
+.two-twelfths {
+  width: 16.666%;
+}
+
+.three-twelfths {
+  width: 25%;
+}
+
+.four-twelfths {
+  width: 33.333%;
+}
+
+.five-twelfths {
+  width: 41.666%;
+}
+
+.six-twelfths {
+  width: 50%;
+}
+
+.seven-twelfths {
+  width: 58.333%;
+}
+
+.eight-twelfths {
+  width: 66.666%;
+}
+
+.nine-twelfths {
+  width: 75%;
+}
+
+.ten-twelfths {
+  width: 83.333%;
+}
+
+.eleven-twelfths {
+  width: 91.666%;
+}
+
+/**
+ * If you have set `$responsive` to ‘true’ in `_vars.scss` then you now have
+ * access to these classes. You can define at which breakpoint you’d like an
+ * element to be a certain size, e.g.:
+ *
+ * `<div class="g  one-quarter  lap-one-half  palm-one-whole"> ... </div>`
+ *
+ * This would create a `div` that, at ‘desktop’ sizes, takes up a quarter of the
+ * horizontal space, a half of that space at ‘tablet’ sizes, and goes full width
+ * at ‘mobile’ sizes.
+ *
+ * Demo: jsfiddle.net/inuitcss/WS4Ge
+ *
+ */
+/* endif */
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $BRAND
+\*------------------------------------*/
+/**
+ * `.brand` is a quick and simple way to apply your brand face and/or color to
+ * any element using a handy helper class.
+ */
+.brand {
+  font-family: "TradeGothicW01-BoldCn20 675334", Arial, Verdana, sans-serif!important;
+  color: #9ac84b!important;
+}
+
+.brand-face {
+  font-family: "TradeGothicW01-BoldCn20 675334", Arial, Verdana, sans-serif!important;
+}
+
+.brand-color,
+.brand-colour {
+  color: #9ac84b!important;
+}
+
+/*------------------------------------*\
+    $HELPER
+\*------------------------------------*/
+/**
+ * A series of helper classes to use arbitrarily. Only use a helper class if an
+ * element/component doesn’t already have a class to which you could apply this
+ * styling, e.g. if you need to float `.main-nav` left then add `float:left;` to
+ * that ruleset as opposed to adding the `.float--left` class to the markup.
+ *
+ * A lot of these classes carry `!important` as you will always want them to win
+ * out over other selectors.
+ */
+/**
+ * Add/remove floats
+ */
+.float--right {
+  float: right !important;
+}
+
+.float--left {
+  float: left !important;
+}
+
+.float--none {
+  float: none !important;
+}
+
+/**
+ * Text alignment
+ */
+.text--left {
+  text-align: left  !important;
+}
+
+.text--center {
+  text-align: center !important;
+}
+
+.text--right {
+  text-align: right !important;
+}
+
+/**
+ * Font weights
+ */
+.weight--light {
+  font-weight: 300 !important;
+}
+
+.weight--normal {
+  font-weight: 400 !important;
+}
+
+.weight--semibold {
+  font-weight: 600 !important;
+}
+
+/**
+ * Add/remove margins
+ */
+.push {
+  margin: 17px !important;
+}
+
+.push--top {
+  margin-top: 17px !important;
+}
+
+.push--right {
+  margin-right: 17px !important;
+}
+
+.push--bottom {
+  margin-bottom: 17px !important;
+}
+
+.push--left {
+  margin-left: 17px !important;
+}
+
+.push--ends {
+  margin-top: 17px !important;
+  margin-bottom: 17px !important;
+}
+
+.push--sides {
+  margin-right: 17px !important;
+  margin-left: 17px !important;
+}
+
+.push-half {
+  margin: 8.5px !important;
+}
+
+.push-half--top {
+  margin-top: 8.5px !important;
+}
+
+.push-half--right {
+  margin-right: 8.5px !important;
+}
+
+.push-half--bottom {
+  margin-bottom: 8.5px !important;
+}
+
+.push-half--left {
+  margin-left: 8.5px !important;
+}
+
+.push-half--ends {
+  margin-top: 8.5px !important;
+  margin-bottom: 8.5px !important;
+}
+
+.push-half--sides {
+  margin-right: 8.5px !important;
+  margin-left: 8.5px !important;
+}
+
+.flush {
+  margin: 0 !important;
+}
+
+.flush--top {
+  margin-top: 0 !important;
+}
+
+.flush--right {
+  margin-right: 0 !important;
+}
+
+.flush--bottom {
+  margin-bottom: 0 !important;
+}
+
+.flush--left {
+  margin-left: 0 !important;
+}
+
+.flush--ends {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.flush--sides {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+/**
+ * Add/remove paddings
+ */
+.soft {
+  padding: 17px !important;
+}
+
+.soft--top {
+  padding-top: 17px !important;
+}
+
+.soft--right {
+  padding-right: 17px !important;
+}
+
+.soft--bottom {
+  padding-bottom: 17px !important;
+}
+
+.soft--left {
+  padding-left: 17px !important;
+}
+
+.soft--ends {
+  padding-top: 17px !important;
+  padding-bottom: 17px !important;
+}
+
+.soft--sides {
+  padding-right: 17px !important;
+  padding-left: 17px !important;
+}
+
+.soft-half {
+  padding: 8.5px !important;
+}
+
+.soft-half--top {
+  padding-top: 8.5px !important;
+}
+
+.soft-half--right {
+  padding-right: 8.5px !important;
+}
+
+.soft-half--bottom {
+  padding-bottom: 8.5px !important;
+}
+
+.soft-half--left {
+  padding-left: 8.5px !important;
+}
+
+.soft-half--ends {
+  padding-top: 8.5px !important;
+  padding-bottom: 8.5px !important;
+}
+
+.soft-half--sides {
+  padding-right: 8.5px !important;
+  padding-left: 8.5px !important;
+}
+
+.hard {
+  padding: 0 !important;
+}
+
+.hard--top {
+  padding-top: 0 !important;
+}
+
+.hard--right {
+  padding-right: 0 !important;
+}
+
+.hard--bottom {
+  padding-bottom: 0 !important;
+}
+
+.hard--left {
+  padding-left: 0 !important;
+}
+
+.hard--ends {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.hard--sides {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/**
+ * Pull items full width of `.island` parents.
+ */
+.full-bleed {
+  margin-right: -17px !important;
+  margin-left: -17px !important;
+}
+.islet .full-bleed {
+  margin-right: -8.5px !important;
+  margin-left: -8.5px !important;
+}
+
+/**
+ * Add a help cursor to any element that gives the user extra information on
+ * `:hover`.
+ */
+.informative {
+  cursor: help !important;
+}
+
+/**
+ * Mute an object by reducing its opacity.
+ */
+.muted {
+  opacity: 0.5 !important;
+  filter: alpha(opacity=50) !important;
+}
+
+/**
+ * Align items to the right where they imply progression/movement forward, e.g.:
+ *
+   <p class=proceed><a href=#>Read more...</a></p>
+ *
+ */
+.proceed {
+  text-align: right !important;
+}
+
+/**
+ * Add a right-angled quote to links that imply movement, e.g.:
+ *
+   <a href=# class=go>Read more</a>
+ *
+ */
+.go:after {
+  content: "\00A0" "\00BB" !important;
+}
+
+/**
+ * Apply capital case to an element (usually a `strong`).
+ */
+.caps {
+  text-transform: uppercase !important;
+}
+
+/**
+ * Hide content off-screen without resorting to `display:none;`, also provide
+ * breakpoint specific hidden elements.
+ */
+.accessibility,
+.visuallyhidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+/* endif */
+/*------------------------------------*\
+    $IMPORTS
+\*------------------------------------*/
+/**
+* These are Terabyte overrides, tweaks and new functionality on top of inuit.css
+*/
+/**
+ * Generic utility styles etc.
+ */
+/*------------------------------------*\
+	$TERABYTE INUIT.CSS FRAMEWORK VARIABLES
+\*------------------------------------*/
+/**
+ * At Terabyte we maintain our own Inuit.css-esque components. Similar to Inuit.css we set our overrides here
+ */
+/*------------------------------------*\
+	$IMPORTS
+\*------------------------------------*/
+/**
+ * Colour assignment for base styles
+ */
+/*------------------------------------*\
+	$COLOUR THEME
+\*------------------------------------*/
+/**
+ * Colour assignment for base styles
+ */
+/*-------------------------------------*\
+	$MODULE COLOURS -
+	NOTE: Variables use BEM style and should use the following convention:
+	$module__subitem--modifier-property. Examples:
+	$lightbox__overlay-background
+	$button--active-color
+\*------------------------------------*/
+/*------------------------------------*\
+	$RESPONSIVE
+\*------------------------------------*/
+/**
+ * Responsiveness?
+ */
+/**
+ * Responsiveness for widescreen/high resolution desktop monitors and beyond?
+ * Note: `$terabyte-responsive` variable above must be set to true before enabling this.
+ */
+/**
+ * Responsive push and pull produce a LOT of code, only turn them on if you
+ * definitely need them.
+ */
+/**
+ * Note: `$terabyte-push` variable above must be set to true before enabling these.
+ */
+/**
+ * Note: `$terabyte-pull` variable above must be set to true before enabling these.
+ */
+/**
+ * Tell terabytenz.css when breakpoints start and end.
+ */
+/*------------------------------------*\
+	$FONT-SIZES
+\*------------------------------------*/
+/**
+ * Font-sizes (in pixels). Refer to relevant sections for their implementations.
+ */
+/*------------------------------------*\
+	$TERABYTE OBJECTS AND ABSTRACTIONS
+\*------------------------------------*/
+/**
+ * Which objects and abstractions would you like to use?
+ */
+/*------------------------------------*\
+	$FRAMEWORK
+\*------------------------------------*/
+/**
+ * inuit.css will work these next ones out for use within the framework.
+ *
+ * Assign our `$base-line-height` to a new spacing var for more transparency.
+ */
+.icon {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.warning {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E5MDMyOSIvPjxzdG9wIG9mZnNldD0iNDQlIiBzdG9wLWNvbG9yPSIjOGYwMjIyIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmQwMDE5Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a90329), color-stop(44%, #8f0222), color-stop(100%, #6d0019));
+  background: -webkit-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+  background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+  background: -o-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+  background: linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%);
+}
+
+.oldie .warning {
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFA90329', endColorstr='#FF6D0019');
+}
+
+/**
+ * Base styles; unclassed HTML elements etc.
+ */
+::-moz-selection {
+  background: #00bce4;
+  color: white;
+  text-shadow: none;
+}
+
+::selection {
+  background: #00bce4;
+  color: white;
+  text-shadow: none;
+}
+
+/*------------------------------------*\
+	$MAIN
+\*------------------------------------*/
+body {
+  color: #646464;
+  background-color: white;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 70.57143em;
+  padding: 0 1em;
+}
+.oldie .wrapper {
+  min-width: 70.57143em;
+  max-width: 70.57143em;
+}
+
+/*------------------------------------*\
+	$HEADINGS
+\*------------------------------------*/
+/**
+ * Vertical rhythm calculator - http://drewish.com/tools/vertical-rhythm
+ * NATO Phonetic Alphabet - http://benjamin.org/dan/nato.html
+ *
+ */
+h1,
+.alpha {
+  font-size: 3.42857em;
+  line-height: 1.04167;
+}
+
+h2,
+.beta {
+  font-size: 2.14286em;
+  line-height: 1.06667;
+}
+
+h3,
+.gamma {
+  font-size: 1.71429em;
+  line-height: 1.08333;
+}
+
+h4,
+.delta {
+  font-size: 1.42857em;
+  line-height: 1.1;
+}
+
+h5,
+.epsilon {
+  font-size: 1.28571em;
+  line-height: 1.11111;
+}
+
+h6,
+.zeta {
+  font-size: 1em;
+  line-height: 1.14286;
+}
+
+/**
+ * A series of classes for setting massive type; for use in heroes, mastheads,
+ * promos, etc.
+ */
+.giga {
+  font-size: 2.57143em;
+  line-height: 1.05556;
+}
+
+.mega {
+  font-size: 1.64286em;
+  line-height: 1.08696;
+}
+
+.kilo {
+  font-size: 1.35714em;
+  line-height: 1.31579;
+}
+
+/*------------------------------------*\
+    $SMALLPRINT
+\*------------------------------------*/
+/**
+ * A series of classes for setting tiny type; for use in smallprint etc.
+ */
+.smallprint,
+.milli {
+  font-size: 0.92857em;
+  line-height: 1.07692;
+}
+
+.micro {
+  font-size: 0.85714em;
+  line-height: 1.16667;
+}
+
+/*------------------------------------*\
+    $IMAGES
+\*------------------------------------*/
+/**
+ * Full width fluid images.
+ */
+.img--full {
+  width: 100%;
+}
+
+/*------------------------------------*\
+    $LINKS
+\*------------------------------------*/
+a {
+  color: #00bce4;
+}
+a:visited {
+  color: #00bce4;
+}
+a:hover {
+  color: #00bce4;
+}
+a:active {
+  color: #00bce4;
+}
+
+/**
+ * Objects and abstractions
+ */
+/*------------------------------------*\
+	$FIGURE
+\*------------------------------------*/
+/**
+ * `.Figure` are image containers which may or may not have a caption
+
+	<div class="figure figure--left">
+		<img src="obligatory-cat-image.png" />
+		<p class="figure__figcaption">Cats are funny creatures.</p>
+	</div>
+ */
+.figure {
+  position: relative;
+  display: block;
+  margin-bottom: 1.21429em;
+}
+
+.figure__container {
+  position: relative;
+}
+
+.figure > img,
+.figure__container,
+.figure__container > img {
+  display: block;
+  width: 100%;
+}
+
+.figure--left {
+  float: left;
+  margin-right: 1.21429em;
+}
+
+.figure--right {
+  float: right;
+  margin-left: 1.21429em;
+}
+
+.figure--full {
+  width: 100%;
+}
+
+.figure__figcaption {
+  margin: 0.60714em 0 0;
+}
+
+.figure__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+.figure__icon > span {
+  width: 100%;
+  font-size: 4em;
+  text-align: center;
+  vertical-align: middle;
+}
+.figure__icon:before {
+  display: inline-block;
+  height: 100%;
+  margin-right: -0.25em;
+  vertical-align: middle;
+  content: '';
+}
+
+.figure--flexi > .figure__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.figure--square {
+  padding-bottom: 100%;
+}
+
+.figure--wide {
+  padding-bottom: 56.25%;
+}
+
+.figure--landscape {
+  padding-bottom: 75%;
+}
+
+.figure--profile {
+  padding-bottom: 133.33333%;
+}
+
+/*------------------------------------*\
+    $GRIDS
+\*------------------------------------*/
+/**
+ * Grid
+ *
+ * We're not big fans of the default grid technique with Inuit.css
+ * where you must strip whitespace between .grid__item elements.
+ * Here we revert to good aul' floats
+ */
+.grid__item {
+  float: left;
+}
+
+.icon--menu {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  width: 30px;
+  height: 5px;
+  content: '';
+  border-top: 15px double white;
+  border-bottom: 5px solid white;
+}
+
+/*------------------------------------*\
+	$FIGURE
+\*------------------------------------*/
+/**
+ * `.Figure` are image containers which may or may not have a caption
+
+<ul class="list--piled">
+	<li class="is-selected">
+		<img src="http://placehold.it/500x300&amp;text=Placeholder" alt=">
+	</li>
+	<li>
+		<a href="http://placehold.it/500x300&amp;text=Placeholder" title=""></a>
+	</li>
+	<li>
+		<a href="http://placehold.it/500x300&amp;text=Placeholder" title=""></a>
+	</li>
+</ul>
+ */
+.list--piled, .rotator__content {
+  position: relative;
+  margin: 0;
+}
+.list--piled > li, .rotator__content > li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+}
+.list--piled > li.is-selected, .rotator__content > li.is-selected {
+  display: block;
+}
+
+.rotator__viewport {
+  position: relative;
+  padding-bottom: 50%;
+}
+
+.rotator__item .figure {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.kitchen-sink {
+  margin-top: 4.14286em;
+}
+.kitchen-sink a,
+.kitchen-sink a:visited {
+  color: black;
+}
+.kitchen-sink a:hover,
+.kitchen-sink a:visited:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.inuit__menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  float: left;
+  background-color: #b31111;
+  z-index: 2;
+  -webkit-box-shadow: 0px 3px 8.5px 0px #646464;
+  -moz-box-shadow: 0px 3px 8.5px 0px #646464;
+  box-shadow: 0px 3px 8.5px 0px #646464;
+}
+.inuit__menu ul {
+  margin: 0;
+  float: left;
+  position: relative;
+}
+.inuit__menu ul li {
+  padding: 10px 30px;
+  list-style-type: none;
+}
+.inuit__menu ul li h1, .inuit__menu ul li h2, .inuit__menu ul li h3, .inuit__menu ul li h4, .inuit__menu ul li h5, .inuit__menu ul li h6 {
+  color: white;
+}
+.inuit__menu ul li h1, .inuit__menu ul li h2, .inuit__menu ul li h3, .inuit__menu ul li h4, .inuit__menu ul li h5, .inuit__menu ul li h6 {
+  margin: 0;
+}
+.inuit__menu ul li a,
+.inuit__menu ul li a:visited {
+  display: block;
+  color: black;
+}
+.inuit__menu ul li a:hover,
+.inuit__menu ul li a:visited:hover {
+  text-decoration: none;
+  color: black;
+}
+.inuit__menu ul li h5 {
+  margin-top: 0.42857em;
+}
+.inuit__menu ul li h5:hover {
+  cursor: pointer;
+}
+.inuit__menu .dropdown__list {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 4.14286em;
+  padding: 0 17px 17px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.inuit__menu .dropdown__list li {
+  padding: 8.5px 0;
+}
+.inuit__menu .dropdown__list li:last-child {
+  padding-bottom: 0;
+}
+
+/**
+ * Style trumps; helper and brand classes
+ */
+/*------------------------------------*\
+	$WIDTHS
+\*------------------------------------*/
+/**
+ * Sizes in human readable format. These are used in conjunction with other
+ * objects and abstractions found in inuit.css, most commonly the grid system
+ * and faux flexbox.
+ */
+@media (max-width: 29.9375em) {
+  /**
+  * Whole
+  */
+  .xs-one-whole {
+    width: 100%;
+  }
+
+  /**
+  * Halves
+  */
+  .xs-one-half {
+    width: 50%;
+  }
+
+  /**
+  * Thirds
+  */
+  .xs-one-third {
+    width: 33.333%;
+  }
+
+  .xs-two-thirds {
+    width: 66.666%;
+  }
+
+  /**
+  * Quarters
+  */
+  .xs-one-quarter {
+    width: 25%;
+  }
+
+  .xs-two-quarters {
+    width: 50%;
+  }
+
+  .xs-three-quarters {
+    width: 75%;
+  }
+
+  /**
+  * Fifths
+  */
+  .xs-one-fifth {
+    width: 20%;
+  }
+
+  .xs-two-fifths {
+    width: 40%;
+  }
+
+  .xs-three-fifths {
+    width: 60%;
+  }
+
+  .xs-four-fifths {
+    width: 80%;
+  }
+
+  /**
+  * Sixths
+  */
+  .xs-one-sixth {
+    width: 16.666%;
+  }
+
+  .xs-two-sixths {
+    width: 33.333%;
+  }
+
+  .xs-three-sixths {
+    width: 50%;
+  }
+
+  .xs-four-sixths {
+    width: 66.666%;
+  }
+
+  .xs-five-sixths {
+    width: 83.333%;
+  }
+
+  /**
+  * Eighths
+  */
+  .xs-one-eighth {
+    width: 12.5%;
+  }
+
+  .xs-two-eighths {
+    width: 25%;
+  }
+
+  .xs-three-eighths {
+    width: 37.5%;
+  }
+
+  .xs-four-eighths {
+    width: 50%;
+  }
+
+  .xs-five-eighths {
+    width: 62.5%;
+  }
+
+  .xs-six-eighths {
+    width: 75%;
+  }
+
+  .xs-seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+  * Tenths
+  */
+  .xs-one-tenth {
+    width: 10%;
+  }
+
+  .xs-two-tenths {
+    width: 20%;
+  }
+
+  .xs-three-tenths {
+    width: 30%;
+  }
+
+  .xs-four-tenths {
+    width: 40%;
+  }
+
+  .xs-five-tenths {
+    width: 50%;
+  }
+
+  .xs-six-tenths {
+    width: 60%;
+  }
+
+  .xs-seven-tenths {
+    width: 70%;
+  }
+
+  .xs-eight-tenths {
+    width: 80%;
+  }
+
+  .xs-nine-tenths {
+    width: 90%;
+  }
+
+  /**
+  * Twelfths
+  */
+  .xs-one-twelfth {
+    width: 8.333%;
+  }
+
+  .xs-two-twelfths {
+    width: 16.666%;
+  }
+
+  .xs-three-twelfths {
+    width: 25%;
+  }
+
+  .xs-four-twelfths {
+    width: 33.333%;
+  }
+
+  .xs-five-twelfths {
+    width: 41.666%;
+  }
+
+  .xs-six-twelfths {
+    width: 50%;
+  }
+
+  .xs-seven-twelfths {
+    width: 58.333%;
+  }
+
+  .xs-eight-twelfths {
+    width: 66.666%;
+  }
+
+  .xs-nine-twelfths {
+    width: 75%;
+  }
+
+  .xs-ten-twelfths {
+    width: 83.333%;
+  }
+
+  .xs-eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media (min-width: 30em) {
+  /**
+  * Whole
+  */
+  .s-one-whole {
+    width: 100%;
+  }
+
+  /**
+  * Halves
+  */
+  .s-one-half {
+    width: 50%;
+  }
+
+  /**
+  * Thirds
+  */
+  .s-one-third {
+    width: 33.333%;
+  }
+
+  .s-two-thirds {
+    width: 66.666%;
+  }
+
+  /**
+  * Quarters
+  */
+  .s-one-quarter {
+    width: 25%;
+  }
+
+  .s-two-quarters {
+    width: 50%;
+  }
+
+  .s-three-quarters {
+    width: 75%;
+  }
+
+  /**
+  * Fifths
+  */
+  .s-one-fifth {
+    width: 20%;
+  }
+
+  .s-two-fifths {
+    width: 40%;
+  }
+
+  .s-three-fifths {
+    width: 60%;
+  }
+
+  .s-four-fifths {
+    width: 80%;
+  }
+
+  /**
+  * Sixths
+  */
+  .s-one-sixth {
+    width: 16.666%;
+  }
+
+  .s-two-sixths {
+    width: 33.333%;
+  }
+
+  .s-three-sixths {
+    width: 50%;
+  }
+
+  .s-four-sixths {
+    width: 66.666%;
+  }
+
+  .s-five-sixths {
+    width: 83.333%;
+  }
+
+  /**
+  * Eighths
+  */
+  .s-one-eighth {
+    width: 12.5%;
+  }
+
+  .s-two-eighths {
+    width: 25%;
+  }
+
+  .s-three-eighths {
+    width: 37.5%;
+  }
+
+  .s-four-eighths {
+    width: 50%;
+  }
+
+  .s-five-eighths {
+    width: 62.5%;
+  }
+
+  .s-six-eighths {
+    width: 75%;
+  }
+
+  .s-seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+  * Tenths
+  */
+  .s-one-tenth {
+    width: 10%;
+  }
+
+  .s-two-tenths {
+    width: 20%;
+  }
+
+  .s-three-tenths {
+    width: 30%;
+  }
+
+  .s-four-tenths {
+    width: 40%;
+  }
+
+  .s-five-tenths {
+    width: 50%;
+  }
+
+  .s-six-tenths {
+    width: 60%;
+  }
+
+  .s-seven-tenths {
+    width: 70%;
+  }
+
+  .s-eight-tenths {
+    width: 80%;
+  }
+
+  .s-nine-tenths {
+    width: 90%;
+  }
+
+  /**
+  * Twelfths
+  */
+  .s-one-twelfth {
+    width: 8.333%;
+  }
+
+  .s-two-twelfths {
+    width: 16.666%;
+  }
+
+  .s-three-twelfths {
+    width: 25%;
+  }
+
+  .s-four-twelfths {
+    width: 33.333%;
+  }
+
+  .s-five-twelfths {
+    width: 41.666%;
+  }
+
+  .s-six-twelfths {
+    width: 50%;
+  }
+
+  .s-seven-twelfths {
+    width: 58.333%;
+  }
+
+  .s-eight-twelfths {
+    width: 66.666%;
+  }
+
+  .s-nine-twelfths {
+    width: 75%;
+  }
+
+  .s-ten-twelfths {
+    width: 83.333%;
+  }
+
+  .s-eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media (min-width: 48em) {
+  /**
+  * Whole
+  */
+  .m-one-whole {
+    width: 100%;
+  }
+
+  /**
+  * Halves
+  */
+  .m-one-half {
+    width: 50%;
+  }
+
+  /**
+  * Thirds
+  */
+  .m-one-third {
+    width: 33.333%;
+  }
+
+  .m-two-thirds {
+    width: 66.666%;
+  }
+
+  /**
+  * Quarters
+  */
+  .m-one-quarter {
+    width: 25%;
+  }
+
+  .m-two-quarters {
+    width: 50%;
+  }
+
+  .m-three-quarters {
+    width: 75%;
+  }
+
+  /**
+  * Fifths
+  */
+  .m-one-fifth {
+    width: 20%;
+  }
+
+  .m-two-fifths {
+    width: 40%;
+  }
+
+  .m-three-fifths {
+    width: 60%;
+  }
+
+  .m-four-fifths {
+    width: 80%;
+  }
+
+  /**
+  * Sixths
+  */
+  .m-one-sixth {
+    width: 16.666%;
+  }
+
+  .m-two-sixths {
+    width: 33.333%;
+  }
+
+  .m-three-sixths {
+    width: 50%;
+  }
+
+  .m-four-sixths {
+    width: 66.666%;
+  }
+
+  .m-five-sixths {
+    width: 83.333%;
+  }
+
+  /**
+  * Eighths
+  */
+  .m-one-eighth {
+    width: 12.5%;
+  }
+
+  .m-two-eighths {
+    width: 25%;
+  }
+
+  .m-three-eighths {
+    width: 37.5%;
+  }
+
+  .m-four-eighths {
+    width: 50%;
+  }
+
+  .m-five-eighths {
+    width: 62.5%;
+  }
+
+  .m-six-eighths {
+    width: 75%;
+  }
+
+  .m-seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+  * Tenths
+  */
+  .m-one-tenth {
+    width: 10%;
+  }
+
+  .m-two-tenths {
+    width: 20%;
+  }
+
+  .m-three-tenths {
+    width: 30%;
+  }
+
+  .m-four-tenths {
+    width: 40%;
+  }
+
+  .m-five-tenths {
+    width: 50%;
+  }
+
+  .m-six-tenths {
+    width: 60%;
+  }
+
+  .m-seven-tenths {
+    width: 70%;
+  }
+
+  .m-eight-tenths {
+    width: 80%;
+  }
+
+  .m-nine-tenths {
+    width: 90%;
+  }
+
+  /**
+  * Twelfths
+  */
+  .m-one-twelfth {
+    width: 8.333%;
+  }
+
+  .m-two-twelfths {
+    width: 16.666%;
+  }
+
+  .m-three-twelfths {
+    width: 25%;
+  }
+
+  .m-four-twelfths {
+    width: 33.333%;
+  }
+
+  .m-five-twelfths {
+    width: 41.666%;
+  }
+
+  .m-six-twelfths {
+    width: 50%;
+  }
+
+  .m-seven-twelfths {
+    width: 58.333%;
+  }
+
+  .m-eight-twelfths {
+    width: 66.666%;
+  }
+
+  .m-nine-twelfths {
+    width: 75%;
+  }
+
+  .m-ten-twelfths {
+    width: 83.333%;
+  }
+
+  .m-eleven-twelfths {
+    width: 91.666%;
+  }
+}
+@media (min-width: 64em) {
+  /**
+  * Whole
+  */
+  .l-one-whole {
+    width: 100%;
+  }
+
+  /**
+  * Halves
+  */
+  .l-one-half {
+    width: 50%;
+  }
+
+  /**
+  * Thirds
+  */
+  .l-one-third {
+    width: 33.333%;
+  }
+
+  .l-two-thirds {
+    width: 66.666%;
+  }
+
+  /**
+  * Quarters
+  */
+  .l-one-quarter {
+    width: 25%;
+  }
+
+  .l-two-quarters {
+    width: 50%;
+  }
+
+  .l-three-quarters {
+    width: 75%;
+  }
+
+  /**
+  * Fifths
+  */
+  .l-one-fifth {
+    width: 20%;
+  }
+
+  .l-two-fifths {
+    width: 40%;
+  }
+
+  .l-three-fifths {
+    width: 60%;
+  }
+
+  .l-four-fifths {
+    width: 80%;
+  }
+
+  /**
+  * Sixths
+  */
+  .l-one-sixth {
+    width: 16.666%;
+  }
+
+  .l-two-sixths {
+    width: 33.333%;
+  }
+
+  .l-three-sixths {
+    width: 50%;
+  }
+
+  .l-four-sixths {
+    width: 66.666%;
+  }
+
+  .l-five-sixths {
+    width: 83.333%;
+  }
+
+  /**
+  * Eighths
+  */
+  .l-one-eighth {
+    width: 12.5%;
+  }
+
+  .l-two-eighths {
+    width: 25%;
+  }
+
+  .l-three-eighths {
+    width: 37.5%;
+  }
+
+  .l-four-eighths {
+    width: 50%;
+  }
+
+  .l-five-eighths {
+    width: 62.5%;
+  }
+
+  .l-six-eighths {
+    width: 75%;
+  }
+
+  .l-seven-eighths {
+    width: 87.5%;
+  }
+
+  /**
+  * Tenths
+  */
+  .l-one-tenth {
+    width: 10%;
+  }
+
+  .l-two-tenths {
+    width: 20%;
+  }
+
+  .l-three-tenths {
+    width: 30%;
+  }
+
+  .l-four-tenths {
+    width: 40%;
+  }
+
+  .l-five-tenths {
+    width: 50%;
+  }
+
+  .l-six-tenths {
+    width: 60%;
+  }
+
+  .l-seven-tenths {
+    width: 70%;
+  }
+
+  .l-eight-tenths {
+    width: 80%;
+  }
+
+  .l-nine-tenths {
+    width: 90%;
+  }
+
+  /**
+  * Twelfths
+  */
+  .l-one-twelfth {
+    width: 8.333%;
+  }
+
+  .l-two-twelfths {
+    width: 16.666%;
+  }
+
+  .l-three-twelfths {
+    width: 25%;
+  }
+
+  .l-four-twelfths {
+    width: 33.333%;
+  }
+
+  .l-five-twelfths {
+    width: 41.666%;
+  }
+
+  .l-six-twelfths {
+    width: 50%;
+  }
+
+  .l-seven-twelfths {
+    width: 58.333%;
+  }
+
+  .l-eight-twelfths {
+    width: 66.666%;
+  }
+
+  .l-nine-twelfths {
+    width: 75%;
+  }
+
+  .l-ten-twelfths {
+    width: 83.333%;
+  }
+
+  .l-eleven-twelfths {
+    width: 91.666%;
+  }
+}
+/**
+ * If you have set the additional `$responsive-extra` variable to ‘true’ in
+ * `_vars.scss` then you now have access to the following class available to
+ * accomodate much larger screen resolutions.
+ */
+/* endif */
+/*------------------------------------*\
+	$PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+	$PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items over to the right by certain amounts.
+ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+@media (min-width: 0) {
+  .show--xs {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 0) and (max-width: 29.9375em) {
+  .show--xs-only {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .hidden--xs-only {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+@media (min-width: 30em) {
+  .hidden--s {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media (min-width: 30em) {
+  .show--s {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 30em) and (max-width: 47.9375em) {
+  .show--s-only {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .hidden--s-only {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+@media (min-width: 48em) {
+  .hidden--m {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media (min-width: 48em) {
+  .show--m {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 48em) and (max-width: 63.9375em) {
+  .show--m-only {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .hidden--m-only {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+@media (min-width: 64em) {
+  .hidden--l {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media (min-width: 64em) {
+  .show--l {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+@media (min-width: 64em) and (max-width: 74.9375em) {
+  .show--l-only {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .hidden--l-only {
+    display: none !important;
+    visibility: hidden;
+  }
+}
+@media (min-width: 75em) {
+  .hidden--xl {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+@media (min-width: 75em) {
+  .show--xl {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+.clear {
+  clear: both !important;
+}
+
+.nowrap {
+  white-space: nowrap !important;
+}
+
+.hot {
+  cursor: pointer !important;
+}
+
+.strike {
+  text-decoration: line-through !important;
+}
+
+.normal {
+  font-weight: normal !important;
+}
+
+.list-no-style {
+  list-style: none !important;
+}
+
+.js-hidden {
+  display: none;
+}
+.no-js .js-hidden {
+  display: block;
+}
+
+.js-invisible {
+  visibility: hidden;
+}
+.no-js .js-invisible {
+  visibility: visible;
+}
+
+html {
+  font-family: 'Open Sans', Airal, sans-serif;
+  font-weight: 300;
+}
+
+body {
+  color: white;
+}
+body p {
+  color: #d9d9d9;
+}
+
+.wf-loading .heading,
+.wf-loading h1, .wf-loading h2, .wf-loading h3, .wf-loading h4, .wf-loading h5, .wf-loading h6 {
+  visibility: hidden;
+}
+
+.heading,
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+  font-weight: 400;
+}
+
+h1 {
+  margin-bottom: 0.41667em;
+  font-weight: 800;
+}
+
+h2 {
+  margin-bottom: 0.4em;
+}
+h2.alpha {
+  font-weight: normal;
+  font-weight: 300;
+}
+
+h3 {
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  margin-bottom: 0.6em;
+}
+
+h5 {
+  margin-bottom: 0.66667em;
+}
+
+h6 {
+  margin-bottom: 0.85714em;
+}
+
+p {
+  margin-bottom: 1.07143em;
+  line-height: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  height: 0.14286em;
+  margin: 0 auto 1em;
+  max-width: 51px;
+  background-color: #000;
+  border: none;
+}
+
+.master-wrapper {
+  max-width: 960px;
+  margin: 51px auto 0;
+}
+
+body {
+  background-color: #333;
+}
+
+.list-inline li {
+  display: inline;
+}
+
+.header {
+  position: relative;
+  padding-bottom: 25.5px;
+}
+.header .header__menu {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  position: absolute;
+  top: 50%;
+  left: 1.42857em;
+  display: block;
+  margin-top: -30px;
+  font-size: 30px;
+}
+.header .header__menu:hover {
+  text-decoration: none;
+  color: #000;
+}
+.header .header__menu:before {
+  font-size: 32px;
+}
+.header .header__contact {
+  position: absolute;
+  top: 50%;
+  right: 1.42857em;
+  margin-top: -1.5em;
+}
+.header h1 {
+  max-width: 200px;
+  margin: auto;
+}
+
+@media only screen and (min-width: 481px) {
+  .header h1 {
+    max-width: 100%;
+  }
+  .header .header__menu {
+    display: none;
+  }
+}
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.navigation li {
+  list-style: none;
+}
+.navigation a {
+  display: block;
+  background-color: #000;
+  padding: .5em 0;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .navigation-container {
+    position: absolute;
+    top: -51px;
+    left: -180px;
+    width: 180px;
+    height: 16983px;
+    background-color: #000;
+  }
+
+  .navigation {
+    width: 180px;
+  }
+  .navigation a {
+    display: block;
+    padding: 17px;
+    border-top: 1px solid #333;
+  }
+  .navigation li:first-child a {
+    border: none;
+  }
+
+  .master-wrapper {
+    -webkit-transition-duration: 0.7s;
+    -moz-transition-duration: 0.7s;
+    -o-transition-duration: 0.7s;
+    transition-duration: 0.7s;
+  }
+  .open-menu .master-wrapper {
+    -webkit-transform: translate3d(180px, 0, 0);
+    -moz-transform: translate3d(180px, 0, 0);
+    -ms-transform: translate3d(180px, 0, 0);
+    -o-transform: translate3d(180px, 0, 0);
+    transform: translate3d(180px, 0, 0);
+  }
+}
+@media only screen and (min-width: 481px) {
+  .navigation ul {
+    width: 100%;
+    padding: 0.71429em 0;
+    overflow: hidden;
+    text-align: center;
+  }
+  .navigation ul li {
+    list-style: none;
+    float: left;
+    width: 25%;
+    padding: .5em;
+  }
+  .navigation ul li:first-child {
+    padding-left: 0;
+  }
+  .navigation ul li:last-child {
+    padding-right: 0;
+  }
+}
+.pod.pod--skill {
+  padding: 0 1.42857em 1.42857em;
+  margin-bottom: 0;
+}
+.pod.pod--skill .pod--skill__image {
+  display: block;
+  margin-bottom: 17px;
+}
+.pod.pod--skill .pod--skill__image img {
+  margin: auto;
+  max-width: 10em;
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  -ms-border-radius: 10em;
+  -o-border-radius: 10em;
+  border-radius: 10em;
+}
+
+.pod.pod--project {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  padding: 0 1.42857em 1.42857em;
+  margin-bottom: 0;
+}
+
+.pod--project__thumbnail {
+  display: block;
+  overflow: hidden;
+}
+.pod--project__thumbnail img {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  margin-bottom: 20px;
+}
+.pod--project__thumbnail h3 {
+  color: blue;
+}
+.js .pod--project__thumbnail {
+  cursor: pointer;
+}
+.pod--project__thumbnail:hover img, .is-selected .pod--project__thumbnail img {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+
+.project-info {
+  -webkit-transition-property: max-height;
+  -moz-transition-property: max-height;
+  -o-transition-property: max-height;
+  transition-property: max-height;
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+}
+.project-info p, .project-info li {
+  color: #666666;
+}
+.project-info .js-proj-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 40px;
+}
+.project-info .js-proj-close:hover {
+  text-decoration: none;
+  color: black;
+}
+.js .project-info {
+  max-height: 0px;
+}
+.js .is-selected .project-info {
+  max-height: 999em;
+  margin: 0 0 1.42857em;
+}
+.project-info .project-info__padding {
+  padding: 2.14286em;
+}
+.project-info .project-info__image h2, .project-info .project-info__image h3 {
+  color: black;
+}
+.project-info .project-info__image img {
+  display: block;
+  margin-bottom: 2.14286em;
+}
+.project-info .project-info__content {
+  padding: 0 20%;
+}
+.project-info .project-info__content h2 {
+  color: black;
+}
+
+@media only screen and (max-width: 640px) {
+  .project-info .project-info__content {
+    padding: 0;
+  }
+  .project-info .project-info__content h2 {
+    font-size: 24px;
+    padding: 0 30px;
+  }
+  .project-info .project-info__content blockquote p {
+    font-size: 17px;
+    line-height: 22px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .project-info .project-info__content {
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+}
+.project-info__image .grid {
+  margin-left: -2.14286em;
+}
+.project-info__image .grid__item {
+  padding-left: 2.14286em;
+}
+
+.pod.pod--contact {
+  padding: 2.85714em;
+  margin-bottom: 0;
+  background-color: #444;
+  color: #fff;
+}
+.pod.pod--contact h2 {
+  color: #fff;
+}
+.pod.pod--contact hr {
+  background-color: #fff;
+}
+
+.pod {
+  margin-bottom: 34px;
+}
+.pod.pod--padded {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.pod.pod--dark {
+  background-color: #000;
+  color: #fff;
+}
+.pod > h2.alpha {
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 479px) {
+  .grid--even-pod-clear .one-whole {
+    clear: left;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .grid--even-pod-clear .s-one-half:nth-child(2n+1) {
+    clear: left;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .grid--even-pod-clear .m-one-third:nth-child(3n+1) {
+    clear: left;
+  }
+
+  .pod.pod--padded {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+}
+.warning {
+  width: 100%;
+}
+.warning a {
+  color: #c3a57f;
+}
+
+.warning-body {
+  margin: auto;
+  padding: 10px 0;
+  color: white;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'portfolio-icons';
+  src: url("/content/fonts/portfolio-icons.eot");
+  src: url("/content/fonts/portfolio-icons.eot?#iefix") format("embedded-opentype"), url("/content/fonts/portfolio-icons.ttf") format("truetype"), url("/content/fonts/portfolio-icons.woff") format("woff"), url("/content/fonts/portfolio-icons.svg#portfolio-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="iconf-"], [class*=" iconf-"] {
+  line-height: 1;
+}
+[class^="iconf-"] .iconf__text, [class*=" iconf-"] .iconf__text {
+  display: none;
+}
+[class^="iconf-"]:before, [class*=" iconf-"]:before {
+  font-family: 'portfolio-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconf-close:before {
+  content: "\e600";
+}
+
+.iconf-arrow_up:before {
+  content: "\e601";
+}
+
+.iconf-arrow_right:before {
+  content: "\e602";
+}
+
+.iconf-arrow_left:before {
+  content: "\e603";
+}
+
+.iconf-award:before {
+  content: "\e60f";
+}
+
+.iconf-arrow_down:before {
+  content: "\e604";
+}
+
+.iconf-twitter:before {
+  content: "\e605";
+}
+
+.iconf-facebook:before {
+  content: "\e606";
+}
+
+.iconf-google-plus:before {
+  content: "\e607";
+}
+
+.iconf-skype:before {
+  content: "\e608";
+}
+
+.iconf-dribbble:before {
+  content: "\e609";
+}
+
+.iconf-logo_lydiabae:before {
+  content: "\e60e";
+}
+
+.iconf-linkedin:before {
+  content: "\e60a";
+}
+
+.iconf-suitcase:before {
+  content: "\e60d";
+}
+
+.iconf-graduate:before {
+  content: "\e60c";
+}
+
+.iconf-list:before {
+  content: "\e60b";
+}
+
+.timeline-list {
+  padding-left: 2.14286em;
+  margin: 0 1.42857em 2.85714em 2.14286em;
+  border-left: 1px solid #888888;
+}
+.timeline-list li {
+  position: relative;
+  list-style: none;
+}
+.timeline-list li:before {
+  position: absolute;
+  top: 0;
+  left: -2.42857em;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  content: '';
+  background: #888888;
+}
+.timeline-list li li {
+  margin-bottom: .5em;
+}
+
+.timeline-list__heading {
+  position: relative;
+  margin-left: 2.14286em;
+  margin-bottom: 25px;
+}
+.timeline-list__heading:before {
+  position: absolute;
+  left: -60px;
+  top: -10px;
+  padding: 12px 0;
+  width: 50px;
+  color: #fff;
+  background: #888888;
+  text-align: center;
+  border-radius: 40px;
+  font-size: 26px;
+}
+.timeline-list__heading.iconf-graduate:before {
+  font-size: 24px;
+  padding: 12px 0;
+}
+
+.social-links {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.social-links [class^="social-"], .social-links [class*=" social-"] {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  padding: 5px;
+  color: #888888;
+  border: 2px solid #888888;
+  border-radius: 30px;
+}
+.social-links [class^="social-"]:before, .social-links [class*=" social-"]:before {
+  font-size: 30px;
+}
+.social-links [class^="social-"]:hover, .social-links [class*=" social-"]:hover {
+  text-decoration: none;
+  border-color: white;
+  color: white;
+}
+.social-links li {
+  margin: 0 1em;
+  line-height: 4.5em;
+}
+.social-links li:first-child {
+  margin-left: 0;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  * {
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+    color: Blue;
+    font-size: 14px;
+    font-weight: normal !important;
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  pre {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    width: auto;
+    margin: 0.5cm;
+}
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
