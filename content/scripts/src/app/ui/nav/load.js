@@ -15,8 +15,15 @@ define(
 			init: function () {
 				NavLoad = this;
 				this._initMediaQueries();
+				$('.navigation').on('click', 'a', NavLoad._gotoTarget);
 			},
-			
+			_gotoTarget: function ( event ) {
+				event.preventDefault();
+				var $target = $($(this).attr('href'));
+				var top = $target.offset().top;
+				$('body,html').animate({ scrollTop: top }, (top * 0.4), 'easeOutQuart');
+			},
+
 			_initMediaQueries: function () {
 				MediaQueries.register( [{
 					//Bind Small Nav
