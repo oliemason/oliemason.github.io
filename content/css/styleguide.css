@@ -2473,7 +2473,7 @@ label,
 	$MAIN
 \*------------------------------------*/
 body {
-  color: #646464;
+  color: #888888;
   background-color: white;
 }
 
@@ -2775,9 +2775,9 @@ a:active {
   float: left;
   background-color: #b31111;
   z-index: 2;
-  -webkit-box-shadow: 0px 3px 8.5px 0px #646464;
-  -moz-box-shadow: 0px 3px 8.5px 0px #646464;
-  box-shadow: 0px 3px 8.5px 0px #646464;
+  -webkit-box-shadow: 0px 3px 8.5px 0px #888888;
+  -moz-box-shadow: 0px 3px 8.5px 0px #888888;
+  box-shadow: 0px 3px 8.5px 0px #888888;
 }
 .inuit__menu ul {
   margin: 0;
@@ -3874,6 +3874,10 @@ h6 {
   margin-bottom: 0.85714em;
 }
 
+.text--spaced {
+  line-height: 1.5;
+}
+
 p {
   margin-bottom: 1.07143em;
   line-height: 1.5em;
@@ -4154,6 +4158,8 @@ body {
 .pod--project__thumbnail {
   display: block;
   overflow: hidden;
+  background-color: #2a2a2a;
+  padding: 1.28571em;
 }
 .pod--project__thumbnail img {
   -webkit-transition-duration: 0.7s;
@@ -4170,8 +4176,8 @@ body {
   color: #5b7e96;
   font-size: 16px;
   text-transform: uppercase;
-  background-color: #2a2a2a;
-  padding: 10px 0;
+  padding: 18px 0 0;
+  margin: 0;
 }
 .js .pod--project__thumbnail {
   cursor: pointer;
@@ -4268,6 +4274,28 @@ body {
   margin-bottom: 0;
   background-color: #2a2a2a;
 }
+.pod.pod--contact .pod--contact__download-cv-btn {
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  display: inline-block;
+  padding: 5px 20px;
+  margin-bottom: 30px;
+  background-color: #5b7e96;
+  color: white;
+  text-transform: uppercase;
+  font-size: 18px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+}
+.pod.pod--contact .pod--contact__download-cv-btn:hover {
+  text-decoration: none;
+  background-color: #2a2a2a;
+}
+.pod.pod--contact .pod--contact__follow-heading {
+  color: #888888;
+  text-transform: uppercase;
+}
 
 .pod--intro {
   margin: 50px 0 100px;
@@ -4290,6 +4318,11 @@ body {
   opacity: .5;
   font-weight: 200;
   font-weight: normal;
+  margin-bottom: 10px;
+}
+.pod--intro .pod--into__tagline {
+  margin: 0;
+  color: #a2a2a2;
 }
 
 .warning {
@@ -4456,8 +4489,8 @@ body {
   width: 45px;
   height: 45px;
   padding: 5px;
-  color: #888888;
-  border: 2px solid #888888;
+  color: #5b7e96;
+  border: 2px solid #5b7e96;
   border-radius: 30px;
 }
 .social-links [class^="social-"]:before, .social-links [class*=" social-"]:before {
@@ -4471,9 +4504,6 @@ body {
 .social-links li {
   margin: 0 1em;
   line-height: 4.5em;
-}
-.social-links li:first-child {
-  margin-left: 0;
 }
 
 .print-only {
