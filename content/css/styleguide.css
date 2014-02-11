@@ -3915,6 +3915,13 @@ body {
   margin-bottom: 6px;
 }
 
+.grid.grid--spaced-30 {
+  margin-left: -30px;
+}
+.grid.grid--spaced-30 > .grid__item {
+  padding-left: 30px;
+}
+
 .list-inline li {
   display: inline;
 }
@@ -4434,14 +4441,14 @@ body {
   margin: 0 1.42857em 2.85714em 2.14286em;
   border-left: 1px solid #888888;
 }
-.timeline-list li {
+.timeline-list > li {
   position: relative;
   list-style: none;
 }
-.timeline-list li:before {
+.timeline-list > li:before {
   position: absolute;
   top: 0;
-  left: -2.42857em;
+  left: -0.28571em;
   display: block;
   width: 8px;
   height: 8px;
@@ -4449,7 +4456,7 @@ body {
   content: '';
   background: #888888;
 }
-.timeline-list li li {
+.timeline-list > li li {
   margin-bottom: .5em;
 }
 
